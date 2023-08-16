@@ -8,10 +8,12 @@ namespace UnitTests
     {
         private Pacient _pacient;
 
+        private readonly string _pacientName = "francisco lacerda";
+
         [SetUp]
         public void Setup()
         {
-            this._pacient = new Pacient("francisco lacerda", 45);
+            this._pacient = new Pacient(this._pacientName, 45);
         }
 
         [Test]
@@ -24,7 +26,7 @@ namespace UnitTests
             var state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing checkin to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.CheckIn, this._pacientName));
 
             /*Triage*/
             // Arrange
@@ -34,7 +36,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing triage to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.Triage, this._pacientName));
         }
 
         [Test]
@@ -47,7 +49,7 @@ namespace UnitTests
             var state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing checkin to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.CheckIn, this._pacientName));
 
             /*Triage*/
             // Arrange
@@ -57,7 +59,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing triage to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.Triage, this._pacientName));
 
             /*MedicEvaluation*/
             this._pacient.ChangeState(new MedicEvaluationState());
@@ -66,7 +68,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing medic evaluation to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.MedicEvaluation, this._pacientName));
         }
 
         [Test]
@@ -79,7 +81,7 @@ namespace UnitTests
             var state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing checkin to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.CheckIn, this._pacientName));
 
             /*Triage*/
             // Arrange
@@ -89,7 +91,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing triage to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.Triage, this._pacientName));
 
             /*MedicEvaluation*/
             this._pacient.ChangeState(new MedicEvaluationState());
@@ -98,7 +100,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing medic evaluation to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.MedicEvaluation, this._pacientName));
 
             /*MedicRelease*/
             this._pacient.ChangeState(new MedicReleaseState());
@@ -107,7 +109,7 @@ namespace UnitTests
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing medic release to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.MedicRelease, this._pacientName));
         }
     }
 }

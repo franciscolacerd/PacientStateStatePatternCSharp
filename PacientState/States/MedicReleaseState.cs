@@ -7,7 +7,7 @@ namespace PacientState.States
     {
         public string ChangeState(Pacient pacient)
         {
-            return $"Doing medic release to pacient {pacient.Name}";
+            return string.Format(Entities.States.MedicRelease, pacient.Name);
         }
     }
 }

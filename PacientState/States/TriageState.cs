@@ -7,7 +7,7 @@ namespace PacientState.States
     {
         public string ChangeState(Pacient pacient)
         {
-            return $"Doing triage to pacient {pacient.Name}";
+            return string.Format(Entities.States.Triage, pacient.Name);
         }
     }
 }
