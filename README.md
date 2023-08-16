@@ -50,6 +50,8 @@ https://en.wikipedia.org/wiki/State_pattern
   }
 ```
 
+...States.
+
 ### 2. Declare the state interface
 ```c#
     public interface IPacientState
