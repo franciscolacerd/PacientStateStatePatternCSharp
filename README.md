@@ -14,3 +14,110 @@ The state pattern is used in computer programming to encapsulate varying behavio
 https://en.wikipedia.org/wiki/State_pattern
 
 ------
+
+## C# Implementation
+
+### 1. Declare Hospital entities 
+
+#### Pacient
+```c#
+  public class Pacient
+  {
+      public string Name { get; private set; }
+
+      public int Age { get; private set; }
+
+      public IPacientState CurrentState { get; private set; }
+
+      public Pacient(string name, int age)
+      {
+          this.Name = name;
+
+          this.Age = age;
+
+          this.CurrentState = new CheckInState();
+      }
+
+      public void ChangeState(IPacientState newState)
+      {
+          this.CurrentState = newState;
+      }
+
+      public string GetCurrentState()
+      {
+          return this.CurrentState.ChangeState(this);
+      }
+  }
+```
+
+### 2. Declare the state interface
+```c#
+    public interface IPacientState
+    {
+        string ChangeState(Pacient pacient);
+    }
+```
+
+### 3. Declare concrete state subclasses
+
+#### CheckInState
+```c#
+    public class CheckInState : IPacientState
+    {
+        public string ChangeState(Pacient pacient)
+        {
+            return $"Doing checkin to pacient {pacient.Name}";
+        }
+    }
+```
+
+#### TriageState
+```c#
+    public class TriageState : IPacientState
+    {
+        public string ChangeState(Pacient pacient)
+        {
+            return $"Doing triage to pacient {pacient.Name}";
+        }
+    }
+```
+
+...MedicEvaluationState, MedicReleaseState.
+
+### 5. Unit test it
+
+```c#
+    public class PacientStateUnitTests
+    {
+        private Pacient _pacient;
+
+        [SetUp]
+        public void Setup()
+        {
+            this._pacient = new Pacient("francisco lacerda", 45);
+        }
+
+        [Test]
+        public void Should_ChangePacientToTriage_ReturnState()
+        {
+            /*CheckIn*/
+            // Arrange
+
+            // Act
+            var state = this._pacient.GetCurrentState();
+
+            // Assert
+            state.Should().Be("Doing checkin to pacient francisco lacerda");
+
+            /*Triage*/
+            // Arrange
+            this._pacient.ChangeState(new TriageState());
+
+            // Act
+            state = this._pacient.GetCurrentState();
+
+            // Assert
+            state.Should().Be("Doing triage to pacient francisco lacerda");
+        }
+    }
+```
