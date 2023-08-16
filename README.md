@@ -66,7 +66,7 @@ https://en.wikipedia.org/wiki/State_pattern
     {
         public string ChangeState(Pacient pacient)
         {
-            return $"Doing checkin to pacient {pacient.Name}";
+            return string.Format(Entities.States.CheckIn, pacient.Name);
         }
     }
 ```
@@ -77,7 +77,7 @@ https://en.wikipedia.org/wiki/State_pattern
     {
         public string ChangeState(Pacient pacient)
         {
-            return $"Doing triage to pacient {pacient.Name}";
+            return string.Format(Entities.States.Triage, pacient.Name);
         }
     }
 ```
@@ -91,10 +91,12 @@ https://en.wikipedia.org/wiki/State_pattern
     {
         private Pacient _pacient;
 
+        private readonly string _pacientName = "francisco lacerda";
+
         [SetUp]
         public void Setup()
         {
-            this._pacient = new Pacient("francisco lacerda", 45);
+            this._pacient = new Pacient(this._pacientName, 45);
         }
 
         [Test]
@@ -107,7 +109,7 @@ https://en.wikipedia.org/wiki/State_pattern
             var state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing checkin to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.CheckIn, this._pacientName));
 
             /*Triage*/
             // Arrange
@@ -117,7 +119,7 @@ https://en.wikipedia.org/wiki/State_pattern
             state = this._pacient.GetCurrentState();
 
             // Assert
-            state.Should().Be("Doing triage to pacient francisco lacerda");
+            state.Should().Be(string.Format(States.Triage, this._pacientName));
         }
     }
 ```
