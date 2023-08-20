@@ -17,7 +17,7 @@ https://en.wikipedia.org/wiki/State_pattern
 
 ## C# Implementation
 
-### 1. Declare Hospital entities 
+### 1. Declare entities 
 
 #### Pacient
 ```c#
