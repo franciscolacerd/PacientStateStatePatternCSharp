@@ -1,9 +1,9 @@
-﻿using PacientState.Contracts;
-using PacientState.Entities;
+﻿using PacientsState.Contracts;
+using PacientsState.Entities;
 
-namespace PacientState.States
+namespace PacientsState.States
 {
-    public class CheckInState : IPacientState
+    public class CheckInState : IPacientsState
     {
         public string ChangeState(Pacient pacient)
         {

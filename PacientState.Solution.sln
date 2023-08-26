@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacientState", "PacientState\PacientState.csproj", "{F8D4946E-D2DA-4A2A-A09B-F93A7673C483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacientsState", "PacientState\PacientsState.csproj", "{F8D4946E-D2DA-4A2A-A09B-F93A7673C483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{D222B746-29B9-4806-B1FB-197A6979C1FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{D222B746-29B9-4806-B1FB-197A6979C1FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

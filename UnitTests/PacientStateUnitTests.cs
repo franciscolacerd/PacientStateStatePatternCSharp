@@ -1,10 +1,10 @@
 using FluentAssertions;
-using PacientState.Entities;
-using PacientState.States;
+using PacientsState.Entities;
+using PacientsState.States;
 
 namespace UnitTests
 {
-    public class PacientStateUnitTests
+    public class PacientsStateUnitTests
     {
         private Pacient _pacient;
 

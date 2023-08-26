@@ -1,8 +1,8 @@
-﻿using PacientState.Entities;
+﻿using PacientsState.Entities;
 
-namespace PacientState.Contracts
+namespace PacientsState.Contracts
 {
-    public interface IPacientState
+    public interface IPacientsState
     {
         string ChangeState(Pacient pacient);
     }

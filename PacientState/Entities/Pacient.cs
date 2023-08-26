@@ -1,7 +1,7 @@
-﻿using PacientState.Contracts;
-using PacientState.States;
+﻿using PacientsState.Contracts;
+using PacientsState.States;
 
-namespace PacientState.Entities
+namespace PacientsState.Entities
 {
     public class Pacient
     {
@@ -9,7 +9,7 @@ namespace PacientState.Entities
 
         public int Age { get; private set; }
 
-        public IPacientState CurrentState { get; private set; }
+        public IPacientsState CurrentState { get; private set; }
 
         public Pacient(string name, int age)
         {
@@ -20,7 +20,7 @@ namespace PacientState.Entities
             this.CurrentState = new CheckInState();
         }
 
-        public void ChangeState(IPacientState newState)
+        public void ChangeState(IPacientsState newState)
         {
             this.CurrentState = newState;
         }

@@ -1,4 +1,4 @@
-﻿namespace PacientState.Entities
+﻿namespace PacientsState.Entities
 {
     public struct States
     {
