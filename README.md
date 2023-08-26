@@ -17,7 +17,7 @@ https://en.wikipedia.org/wiki/State_pattern
 
 ## C# Implementation
 
-### 1. Declare Hospital entities 
+### 1. Declare entities 
 
 #### Pacient
 ```c#
@@ -101,27 +101,45 @@ https://en.wikipedia.org/wiki/State_pattern
             this._pacient = new Pacient(this._pacientName, 45);
         }
 
-        [Test]
-        public void Should_ChangePacientToTriage_ReturnState()
-        {
-            /*CheckIn*/
-            // Arrange
-
-            // Act
-            var state = this._pacient.GetCurrentState();
-
-            // Assert
-            state.Should().Be(string.Format(States.CheckIn, this._pacientName));
-
-            /*Triage*/
-            // Arrange
-            this._pacient.ChangeState(new TriageState());
-
-            // Act
-            state = this._pacient.GetCurrentState();
-
-            // Assert
-            state.Should().Be(string.Format(States.Triage, this._pacientName));
-        }
+       [Test]
+       public void Should_ChangePacientToMedicRelease_ReturnState()
+       {
+           /*CheckIn*/
+           // Arrange
+  
+           // Act
+           var state = this._pacient.GetCurrentState();
+  
+           // Assert
+           state.Should().Be(string.Format(States.CheckIn, this._pacientName));
+  
+           /*Triage*/
+           // Arrange
+           this._pacient.ChangeState(new TriageState());
+  
+           // Act
+           state = this._pacient.GetCurrentState();
+  
+           // Assert
+           state.Should().Be(string.Format(States.Triage, this._pacientName));
+  
+           /*MedicEvaluation*/
+           this._pacient.ChangeState(new MedicEvaluationState());
+  
+           // Act
+           state = this._pacient.GetCurrentState();
+  
+           // Assert
+           state.Should().Be(string.Format(States.MedicEvaluation, this._pacientName));
+  
+           /*MedicRelease*/
+           this._pacient.ChangeState(new MedicReleaseState());
+  
+           // Act
+           state = this._pacient.GetCurrentState();
+  
+           // Assert
+           state.Should().Be(string.Format(States.MedicRelease, this._pacientName));
+       }
     }
 ```
